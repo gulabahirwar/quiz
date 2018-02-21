@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Quiz</string>
+    <string name="session">Session expired try next quiz!</string>
+    <string name="winner">Congratulation, You win the contest </string>
+    <string name="looser">Try again, You loss the contest</string>
+    <string name="restart_quiz">Restart Quiz</string>
+    <string name="next_quiz">next quiz</string>
+    <string name="start_quiz">Start Quiz</string>
+    <string name="start">Start</string>
+    <string name="next">Next</string>
+</resources>
