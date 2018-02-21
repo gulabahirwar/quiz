@@ -73,8 +73,7 @@ public class MainActivity extends AppCompatActivity implements ViewPager.OnPageC
         customViewPager.setPageTransformer(false,new DepthPageTransformer());
 
         alert = new CustomDialog();
-       if (!isRunning)
-        alert.showDialog(MainActivity.this, getString(R.string.start_quiz),getString(R.string.start));
+
     }
 
 
@@ -103,6 +102,8 @@ public class MainActivity extends AppCompatActivity implements ViewPager.OnPageC
         super.onStart();
         if (appWasInBackGround){
             startTimer();
+        }else{
+            alert.showDialog(MainActivity.this, getString(R.string.start_quiz),getString(R.string.start));
         }
     }
 
