@@ -25,6 +25,7 @@ public class CustomDialog {
 
             Button dialogButton = (Button) dialog.findViewById(R.id.btn_dialog);
             dialogButton.setText(buttonText);
+            dialogButton.setTextSize(16);
 
             dialogButton.setOnClickListener(new View.OnClickListener() {
                 @Override

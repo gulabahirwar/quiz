@@ -24,8 +24,9 @@ public class MainActivity extends AppCompatActivity implements ViewPager.OnPageC
     private CustomDialog alert;
     private ViewPagerItemAdapter adapter;
     private Handler handler = new Handler();
-    private static int counter = 10,savedCounter;
+    private static int counter = 10;
     private static boolean appWasInBackGround=false;
+    private boolean isRunning=false;
 
     Runnable runnable = new Runnable() {
         @Override
@@ -33,6 +34,7 @@ public class MainActivity extends AppCompatActivity implements ViewPager.OnPageC
             counter--;
             timer.setText("Timer 00:"+new DecimalFormat("00").format(counter));
             startTimer();
+            isRunning=true;
             if(counter==0){
                 cancelTimer();
                 //+1 because getCurrentItem index start to 0
@@ -71,6 +73,7 @@ public class MainActivity extends AppCompatActivity implements ViewPager.OnPageC
         customViewPager.setPageTransformer(false,new DepthPageTransformer());
 
         alert = new CustomDialog();
+       if (!isRunning)
         alert.showDialog(MainActivity.this, getString(R.string.start_quiz),getString(R.string.start));
     }
 
@@ -82,11 +85,12 @@ public class MainActivity extends AppCompatActivity implements ViewPager.OnPageC
     public void cancelTimer() {
         counter=10;
         handler.removeCallbacks(runnable);
+        isRunning=false;
     }
 
     @Override
     protected void onStop() {
-        if (handler!=null) {
+        if (isRunning) {
             handler.removeCallbacks(runnable);
             appWasInBackGround=true;
         }
