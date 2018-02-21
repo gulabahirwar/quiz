@@ -4,6 +4,7 @@ import android.os.Handler;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.TextView;
 
 import com.example.gsadev.quiz.R;
@@ -85,19 +86,18 @@ public class MainActivity extends AppCompatActivity implements ViewPager.OnPageC
 
     @Override
     protected void onStop() {
-        if (runnable!=null){
-            savedCounter=counter;
-            cancelTimer();
+        if (handler!=null) {
+            handler.removeCallbacks(runnable);
             appWasInBackGround=true;
         }
         super.onStop();
     }
 
+
     @Override
-    protected void onResume() {
-        super.onResume();
+    protected void onStart() {
+        super.onStart();
         if (appWasInBackGround){
-            counter=savedCounter;
             startTimer();
         }
     }
