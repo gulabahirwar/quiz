@@ -67,9 +67,7 @@ public class ViewPagerItemAdapter extends PagerAdapter implements View.OnClickLi
                 }
                 previousSelectedItem=view;
 
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-                    view.setBackground(context.getResources().getDrawable(R.drawable.rect));
-                }
+                view.setBackground(context.getResources().getDrawable(R.drawable.rect));
 
                 //+1 because i index start to 0
                 if (quizData.getAnswers().get(position)==i+1){
